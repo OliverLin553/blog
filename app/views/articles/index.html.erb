@@ -1,23 +1,31 @@
 <%= render 'public/menu' %>
-<h1>Listing articles</h1>
-<%= link_to 'New article', new_article_path %>
+<div class="container">
+  <h2 class="text-center">Listing articles</h2>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Text</th>
-    <th colspan="3"></th>
-  </tr>
+  <div class="clearfix">
+    <p class="text-right"><%= link_to 'Add', new_article_path %></p>
+  </div>
 
-  <% @articles.each do |article| %>
+  <div class="panel panel-default">
+    <table class="table">
       <tr>
-        <td><%= article.title %></td>
-        <td><%= article.text %></td>
-        <td><%= link_to 'Show', article_path(article) %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'delete', article_path(article),
-                        method: :delete, data: { confirm: '你确定吗?' } %></td>
+        <th>id</th>
+        <th>Title</th>
+        <th>Text</th>
+        <th colspan="3"></th>
       </tr>
-  <% end %>
-</table>
-<%= link_to 'go index', controller: 'welcome' %>
+
+      <% @articles.each do |article| %>
+          <tr>
+            <td><%= article.id %></td>
+            <td><%= article.title %></td>
+            <td><%= article.text %></td>
+            <td><%= link_to 'Show', article_path(article) %></td>
+            <td><%= link_to 'Edit', edit_article_path(article) %></td>
+            <td><%= link_to 'Delete', article_path(article),
+                            method: :delete, data: { confirm: '你确定吗?' } %></td>
+          </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
