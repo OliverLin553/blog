@@ -10,6 +10,15 @@
       <li>
         <%= link_to 'New article', new_article_path %>
       </li>
+
+      <% if current_user %>
+        <li><a>Signed in as <%= current_user.name %></a></li>
+        <li> <%= link_to "Logout", '/logout', data: { confirm: '你确定吗?' } %></li>
+      <% else %>
+        <li> <%= link_to 'Login', '/login' %> </li>
+        <li> <%= link_to 'Signup', '/signup' %></li>
+      <% end %>
+
     </ul>
   </div>
 </nav>
